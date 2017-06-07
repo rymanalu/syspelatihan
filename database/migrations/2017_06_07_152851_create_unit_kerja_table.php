@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProviderTable extends Migration
+class CreateUnitKerjaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateProviderTable extends Migration
      */
     public function up()
     {
-        Schema::create('provider', function (Blueprint $table) {
+        Schema::create('unit_kerja', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('id_divisi')->unsigned();
             $table->string('nama');
-            $table->string('alamat');
-            $table->string('telepon');
-            $table->string('email');
+
+            $table->foreign('id_divisi')->references('id')->on('divisi')->onDelete('cascade');
         });
     }
 
@@ -29,6 +29,6 @@ class CreateProviderTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('provider');
+        Schema::dropIfExists('unit_kerja');
     }
 }
