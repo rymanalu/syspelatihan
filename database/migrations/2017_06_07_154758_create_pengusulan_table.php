@@ -19,10 +19,10 @@ class CreatePengusulanTable extends Migration
             $table->text('keterangan_pelatihan');
             $table->text('target_hasil_pelatihan');
             $table->text('catatan');
-            $table->boolean('status');
+            $table->tinyInteger('status');
             $table->date('tanggal_pengajuan');
-            $table->date('tanggal_approve_1');
-            $table->date('tanggal_approve_2');
+            $table->date('tanggal_approve_1')->nullable();
+            $table->date('tanggal_approve_2')->nullable();
 
             $table->foreign('id_karyawan')->references('id')->on('karyawan')->onDelete('cascade');
         });
