@@ -1,9 +1,11 @@
 <?php
 
-$factory->define(App\Peran::class, function (Faker\Generator $faker) {
+use App\Peran;
+
+$factory->define(Peran::class, function (Faker\Generator $faker) {
     return [
         'nama' => $faker->randomElement([
-            'Admin', 'Manager 1', 'Manager 2',
+            Peran::ADMIN, PERAN::MANAJER1, PERAN::MANAJER2, Peran::USER,
         ]),
     ];
 });

@@ -15,7 +15,7 @@ class CreateEvaluasiPelatihanTable extends Migration
     {
         Schema::create('evaluasi_pelatihan', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_pelatihan')->unsigned();
+            $table->integer('id_pelatihan')->unsigned()->nullable();
             $table->string('judul');
             $table->boolean('default');
 

@@ -8,9 +8,9 @@ $factory->define(Pengusulan::class, function (Faker\Generator $faker) {
         'id_karyawan' => function () {
             return factory(App\Karyawan::class)->create()->getKey();
         },
-        'keterangan_pelatihan' => $faker->text,
-        'target_hasil_pelatihan' => $faker->text,
-        'catatan' => $faker->text,
+        'keterangan_pelatihan' => $faker->boolean ? $faker->text : null,
+        'target_hasil_pelatihan' => $faker->boolean ? $faker->text : null,
+        'catatan' => $faker->boolean ? $faker->text : null,
         'status' => $faker->randomElement([
             Pengusulan::BARU, Pengusulan::APPROVE_MANAJER1, Pengusulan::APPROVE_MANAJER2,
         ]),

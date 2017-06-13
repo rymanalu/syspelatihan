@@ -48,4 +48,9 @@ class Karyawan extends Authenticatable
     {
         return $this->belongsToMany(EvaluasiPelatihan::class, 'penilaian_evaluasi', 'id_karyawan', 'id_evaluasi_pelatihan');
     }
+
+    public function isAdmin()
+    {
+        return $this->peran->nama === Peran::ADMIN;
+    }
 }

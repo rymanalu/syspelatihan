@@ -18,11 +18,11 @@ class CreatePelatihanTable extends Migration
             $table->integer('id_provider')->unsigned();
             $table->string('nama');
             $table->date('tanggal_mulai');
-            $table->date('tanggal_selesai');
+            $table->date('tanggal_selesai')->nullable();
             $table->decimal('biaya_per_orang', 19, 4);
-            $table->string('brosur');
-            $table->text('catatan');
-            $table->boolean('status');
+            $table->string('brosur')->nullable();
+            $table->text('catatan')->nullable();
+            $table->boolean('status')->default(false);
 
             $table->foreign('id_provider')->references('id')->on('provider')->onDelete('cascade');
         });
