@@ -23,6 +23,7 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('divisi', 'DivisiController');
-    Route::resource('provider', 'ProviderController');
+    Route::resource('divisi', 'DivisiController', ['except' => 'show']);
+    Route::resource('provider', 'ProviderController', ['except' => 'show']);
+    Route::resource('unit_kerja', 'UnitKerjaController', ['except' => 'show']);
 });

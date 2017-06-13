@@ -6,9 +6,9 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Provider
+                    Unit Kerja
                     <div class="pull-right">
-                        <a class="btn btn-primary" href="{{ route('provider.create') }}">Tambah</a>
+                        <a class="btn btn-primary" href="{{ route('unit_kerja.create') }}">Tambah</a>
                     </div>
                 </div>
 
@@ -18,30 +18,26 @@
                             <tr>
                                 <th width="5%">#</th>
                                 <th>Nama</th>
-                                <th>Alamat</th>
-                                <th>Telepon</th>
-                                <th>Email</th>
+                                <th>Divisi</th>
                                 <th width="25%"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($semuaProvider as $provider)
+                            @forelse ($semuaUnitKerja as $unitKerja)
                                 <tr>
                                     <td align="right">{{ $loop->iteration }}</td>
-                                    <td>{{ $provider->nama }}</td>
-                                    <td>{{ $provider->alamat }}</td>
-                                    <td>{{ $provider->telepon }}</td>
-                                    <td>{{ $provider->email }}</td>
+                                    <td>{{ $unitKerja->nama }}</td>
+                                    <td>{{ $unitKerja->divisi->nama }}</td>
                                     <td align="center">
                                         @include('shared.action', [
-                                            'editUrl' => route('provider.edit', $provider),
-                                            'deleteUrl' => route('provider.destroy', $provider),
+                                            'editUrl' => route('unit_kerja.edit', $unitKerja),
+                                            'deleteUrl' => route('unit_kerja.destroy', $unitKerja),
                                         ])
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td align="center" colspan="6">No data available in table</td>
+                                    <td align="center" colspan="4">No data available in table</td>
                                 </tr>
                             @endforelse
                         </tbody>

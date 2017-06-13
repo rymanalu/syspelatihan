@@ -47,6 +47,12 @@
                                 <a href="{{ route('provider.index') }}">Provider</a>
                             </li>
                         @endcan
+
+                        @can('view', App\UnitKerja::class)
+                            <li>
+                                <a href="{{ route('unit_kerja.index') }}">Unit Kerja</a>
+                            </li>
+                        @endcan
                     </ul>
 
                     <!-- Right Side Of Navbar -->

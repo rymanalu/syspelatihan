@@ -16,7 +16,7 @@
                     <table class="table table-hover table-responsive">
                         <thead>
                             <tr>
-                                <th width="10%">#</th>
+                                <th width="5%">#</th>
                                 <th>Nama</th>
                                 <th width="25%"></th>
                             </tr>
