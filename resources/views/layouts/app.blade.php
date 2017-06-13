@@ -41,6 +41,12 @@
                                 <a href="{{ route('divisi.index') }}">Divisi</a>
                             </li>
                         @endcan
+
+                        @can('view', App\Provider::class)
+                            <li>
+                                <a href="{{ route('provider.index') }}">Provider</a>
+                            </li>
+                        @endcan
                     </ul>
 
                     <!-- Right Side Of Navbar -->
