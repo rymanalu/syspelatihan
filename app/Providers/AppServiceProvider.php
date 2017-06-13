@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use DB;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +14,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        if ($this->app->isLocal() || $this->app->runningUnitTests()) {
+            DB::listen(function ($event) {
+                info([
+                    'sql' => $event->sql,
+                    'bindings' => $event->bindings,
+                ]);
+            });
+        }
     }
 
     /**

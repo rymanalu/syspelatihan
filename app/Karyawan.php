@@ -8,6 +8,10 @@ class Karyawan extends Authenticatable
 {
     protected $table = 'karyawan';
 
+    protected $dates = [
+        'tanggal_lahir',
+    ];
+
     public $timestamps = false;
 
     protected $hidden = ['password', 'remember_token'];
@@ -52,5 +56,10 @@ class Karyawan extends Authenticatable
     public function isAdmin()
     {
         return $this->peran->nama === Peran::ADMIN;
+    }
+
+    public function jenisKelamin()
+    {
+        return $this->jenis_kelamin == 1 ? 'Laki-laki' : 'Perempuan';
     }
 }

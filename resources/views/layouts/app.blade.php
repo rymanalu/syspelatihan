@@ -42,6 +42,12 @@
                             </li>
                         @endcan
 
+                        @can('view', App\Karyawan::class)
+                            <li>
+                                <a href="{{ route('karyawan.index') }}">Karyawan</a>
+                            </li>
+                        @endcan
+
                         @can('view', App\Provider::class)
                             <li>
                                 <a href="{{ route('provider.index') }}">Provider</a>
