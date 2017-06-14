@@ -7,7 +7,7 @@
         <select class="form-control" name="id_unit_kerja">
             <option value="">Pilih Unit Kerja</option>
             @foreach ($semuaUnitKerja as $id => $unitKerja)
-                <option value="{{ $id }}"{{ $id == $karyawan->id_unit_kerja ? ' selected' : '' }}>{{ $unitKerja }}</option>
+                <option value="{{ $id }}"{{ $id == old('id_unit_kerja') ?: $karyawan->id_unit_kerja ? ' selected' : '' }}>{{ $unitKerja }}</option>
             @endforeach
         </select>
 
@@ -25,7 +25,7 @@
     <div class="col-md-9">
         <select class="form-control" name="id_peran">
             @foreach ($semuaPeran as $id => $peran)
-                <option value="{{ $id }}"{{ $id == $karyawan->id_peran ? ' selected' : '' }}>{{ $peran }}</option>
+                <option value="{{ $id }}"{{ $id == (old('id_peran') ?: $karyawan->id_peran) ? ' selected' : '' }}>{{ $peran }}</option>
             @endforeach
         </select>
 

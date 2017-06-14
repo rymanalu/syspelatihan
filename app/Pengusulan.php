@@ -12,6 +12,10 @@ class Pengusulan extends Model
 
     protected $table = 'pengusulan';
 
+    protected $dates = [
+        'tanggal_pengajuan',
+    ];
+
     public $timestamps = false;
 
     protected $fillable = ['id_karyawan', 'keterangan_pelatihan', 'target_hasil_pelatihan', 'catatan', 'status', 'tanggal_pengajuan', 'tanggal_approve_1', 'tanggal_approve_2'];
@@ -19,5 +23,23 @@ class Pengusulan extends Model
     public function karyawan()
     {
         return $this->belongsTo(Karyawan::class, 'id_karyawan');
+    }
+
+    public function status()
+    {
+        switch ($this->status) {
+            case static::BARU:
+                return 'Baru';
+                break;
+            case static::APPROVE_MANAJER1:
+                return 'Approved by Manajer 1';
+                break;
+            case static::APPROVE_MANAJER2:
+                return 'Approved by Manajer 2';
+                break;
+            default:
+                return '';
+                break;
+        }
     }
 }

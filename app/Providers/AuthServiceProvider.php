@@ -17,6 +17,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Karyawan' => 'App\Policies\KaryawanPolicy',
         'App\Provider' => 'App\Policies\ProviderPolicy',
         'App\UnitKerja' => 'App\Policies\UnitKerjaPolicy',
+        'App\Pengusulan' => 'App\Policies\PengusulanPolicy',
     ];
 
     /**

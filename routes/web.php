@@ -24,7 +24,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('divisi', 'DivisiController', ['except' => 'show']);
+
     Route::resource('karyawan', 'KaryawanController', ['except' => 'show']);
+
     Route::resource('provider', 'ProviderController', ['except' => 'show']);
+
     Route::resource('unit_kerja', 'UnitKerjaController', ['except' => 'show']);
+
+    Route::patch('pengusulan/{pengusulan}/approve', 'PengusulanController@approve')->name('pengusulan.approve');
+    Route::resource('pengusulan', 'PengusulanController', ['except' => 'show']);
 });

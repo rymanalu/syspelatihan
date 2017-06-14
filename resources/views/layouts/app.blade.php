@@ -36,27 +36,33 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        @can('view', App\Divisi::class)
+                        @can('viewAll', App\Divisi::class)
                             <li>
                                 <a href="{{ route('divisi.index') }}">Divisi</a>
                             </li>
                         @endcan
 
-                        @can('view', App\Karyawan::class)
+                        @can('viewAll', App\Karyawan::class)
                             <li>
                                 <a href="{{ route('karyawan.index') }}">Karyawan</a>
                             </li>
                         @endcan
 
-                        @can('view', App\Provider::class)
+                        @can('viewAll', App\Provider::class)
                             <li>
                                 <a href="{{ route('provider.index') }}">Provider</a>
                             </li>
                         @endcan
 
-                        @can('view', App\UnitKerja::class)
+                        @can('viewAll', App\UnitKerja::class)
                             <li>
                                 <a href="{{ route('unit_kerja.index') }}">Unit Kerja</a>
+                            </li>
+                        @endcan
+
+                        @can('viewAll', App\Pengusulan::class)
+                            <li>
+                                <a href="{{ route('pengusulan.index') }}">Pengusulan</a>
                             </li>
                         @endcan
                     </ul>

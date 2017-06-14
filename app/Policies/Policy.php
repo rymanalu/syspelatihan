@@ -7,7 +7,7 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 
 abstract class Policy
 {
-    use HandlesAuthorization;
+    use ViewAllPolicy, HandlesAuthorization;
 
     public function before(Karyawan $user, $ability)
     {
