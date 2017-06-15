@@ -29,6 +29,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('provider', 'ProviderController', ['except' => 'show']);
 
+    Route::resource('pelatihan', 'PelatihanController', ['except' => 'show']);
+
     Route::resource('unit_kerja', 'UnitKerjaController', ['except' => 'show']);
 
     Route::patch('pengusulan/{pengusulan}/approve', 'PengusulanController@approve')->name('pengusulan.approve');

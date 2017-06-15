@@ -54,6 +54,12 @@
                             </li>
                         @endcan
 
+                        @can('viewAll', App\Pelatihan::class)
+                            <li>
+                                <a href="{{ route('pelatihan.index') }}">Pelatihan</a>
+                            </li>
+                        @endcan
+
                         @can('viewAll', App\UnitKerja::class)
                             <li>
                                 <a href="{{ route('unit_kerja.index') }}">Unit Kerja</a>
