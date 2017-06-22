@@ -71,6 +71,12 @@
                                 <a href="{{ route('pengusulan.index') }}">Pengusulan</a>
                             </li>
                         @endcan
+
+                        @can('viewAll', App\KuisonerPelatihan::class)
+                            <li>
+                                <a href="{{ route('kuisoner_pelatihan.index') }}">Kuisoner Pelatihan</a>
+                            </li>
+                        @endcan
                     </ul>
 
                     <!-- Right Side Of Navbar -->
