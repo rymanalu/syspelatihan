@@ -19,6 +19,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Pelatihan' => 'App\Policies\PelatihanPolicy',
         'App\UnitKerja' => 'App\Policies\UnitKerjaPolicy',
         'App\Pengusulan' => 'App\Policies\PengusulanPolicy',
+        'App\EvaluasiPelatihan' => 'App\Policies\EvaluasiPelatihanPolicy',
         'App\KuisonerPelatihan' => 'App\Policies\KuisonerPelatihanPolicy',
     ];
 

@@ -11,16 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-// Auth::routes();
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('divisi', 'DivisiController', ['except' => 'show']);
@@ -35,6 +30,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::patch('pengusulan/{pengusulan}/approve', 'PengusulanController@approve')->name('pengusulan.approve');
     Route::resource('pengusulan', 'PengusulanController', ['except' => 'show']);
+
+    Route::resource('evaluasi_pelatihan', 'EvaluasiPelatihanController', ['except' => 'show']);
 
     Route::resource('kuisoner_pelatihan', 'KuisonerPelatihanController', ['except' => 'show']);
 });

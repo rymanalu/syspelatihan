@@ -72,6 +72,12 @@
                             </li>
                         @endcan
 
+                        @can('viewAll', App\EvaluasiPelatihan::class)
+                            <li>
+                                <a href="{{ route('evaluasi_pelatihan.index') }}">Evaluasi Pelatihan</a>
+                            </li>
+                        @endcan
+
                         @can('viewAll', App\KuisonerPelatihan::class)
                             <li>
                                 <a href="{{ route('kuisoner_pelatihan.index') }}">Kuisoner Pelatihan</a>
@@ -113,5 +119,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    @stack('scripts')
 </body>
 </html>
