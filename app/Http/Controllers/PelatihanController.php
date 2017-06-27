@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Karyawan;
 use App\Provider;
 use App\Pelatihan;
 use App\Http\Requests\PelatihanRequest;
@@ -29,6 +30,7 @@ class PelatihanController extends Controller
     {
         return view('pelatihan.create', [
             'pelatihan' => new Pelatihan,
+            'semuaKaryawan' => Karyawan::orderBy('nama')->pluck('nama', 'id')->toArray(),
             'semuaProvider' => Provider::orderBy('nama')->pluck('nama', 'id')->toArray(),
         ]);
     }
@@ -49,7 +51,11 @@ class PelatihanController extends Controller
             $data['brosur'] = $request->file('brosur')->storePublicly('brosur');
         }
 
-        Pelatihan::create($data);
+        $pelatihan = Pelatihan::create($data);
+
+        if ($request->has('karyawan')) {
+            $pelatihan->karyawan()->attach($request->input('karyawan'));
+        }
 
         return redirect()->route('pelatihan.index');
     }
@@ -73,9 +79,10 @@ class PelatihanController extends Controller
      */
     public function edit(Pelatihan $pelatihan)
     {
+        $semuaKaryawan = Karyawan::orderBy('nama')->pluck('nama', 'id')->toArray();
         $semuaProvider = Provider::orderBy('nama')->pluck('nama', 'id')->toArray();
 
-        return view('pelatihan.edit', compact('pelatihan', 'semuaProvider'));
+        return view('pelatihan.edit', compact('pelatihan', 'semuaKaryawan', 'semuaProvider'));
     }
 
     /**
@@ -96,6 +103,10 @@ class PelatihanController extends Controller
         }
 
         $pelatihan->update($data);
+
+        if ($request->has('karyawan')) {
+            $pelatihan->karyawan()->sync($request->input('karyawan'));
+        }
 
         return redirect()->route('pelatihan.index');
     }

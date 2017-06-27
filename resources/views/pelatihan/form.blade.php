@@ -68,6 +68,24 @@
     </div>
 </div>
 
+<div class="form-group{{ $errors->has('karyawan') ? ' has-error' : '' }}">
+    <label for="karyawan" class="col-md-3 control-label">Karyawan</label>
+
+    <div class="col-md-9">
+        <select class="form-control" name="karyawan[]" multiple="multiple">
+            @foreach ($semuaKaryawan as $id => $karyawan)
+                <option value="{{ $id }}"{{ $pelatihan->karyawan()->where('id_karyawan', $id)->count() ? ' selected' : '' }}>{{ $karyawan }}</option>
+            @endforeach
+        </select>
+
+        @if ($errors->has('karyawan'))
+            <span class="help-block">
+                <strong>{{ $errors->first('karyawan') }}</strong>
+            </span>
+        @endif
+    </div>
+</div>
+
 <div class="form-group{{ $errors->has('biaya_per_orang') ? ' has-error' : '' }}">
     <label for="biaya_per_orang" class="col-md-3 control-label">Biaya Per Orang</label>
 
