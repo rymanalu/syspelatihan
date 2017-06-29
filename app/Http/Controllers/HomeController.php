@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Auth;
+use App\Pengusulan;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $loggedInUser = Auth::user();
+
+        $createdPengusulan = Pengusulan::where('id_karyawan', $loggedInUser->id)->get();
+
+        $followedPelatihan = $loggedInUser->pelatihan;
+
+        return view('home', compact('createdPengusulan', 'followedPelatihan'));
     }
 }
