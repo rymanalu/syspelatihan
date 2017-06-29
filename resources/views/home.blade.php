@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading">Pengusulan yang Anda buat</div>
 
@@ -12,7 +12,7 @@
                         <thead>
                             <tr>
                                 <th>Pengusulan</th>
-                                <th width="35%">Status</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,7 +32,7 @@
             </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading">Pelatihan yang Anda ikuti</div>
 
@@ -41,7 +41,7 @@
                         <thead>
                             <tr>
                                 <th>Pelatihan</th>
-                                <th width="35%">Status</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -53,6 +53,35 @@
                             @empty
                                 <tr>
                                     <td align="center" colspan="2">Anda belum mengikuti pelatihan apapun</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">Kuisoner yang belum Anda isi</div>
+
+                <div class="panel-body">
+                    <table class="table table-hover table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Pelatihan</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($unansweredPelatihanQuiz as $pelatihan)
+                                <tr>
+                                    <td>{{ $pelatihan->nama }}</td>
+                                    <td>{{ $pelatihan->getStatus() }}</td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td align="center" colspan="2">Tidak ada kuisoner untuk saat ini</td>
                                 </tr>
                             @endforelse
                         </tbody>

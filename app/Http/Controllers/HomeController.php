@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\Pelatihan;
 use App\Pengusulan;
 
 class HomeController extends Controller
@@ -26,10 +27,14 @@ class HomeController extends Controller
     {
         $loggedInUser = Auth::user();
 
-        $createdPengusulan = Pengusulan::where('id_karyawan', $loggedInUser->id)->get();
-
-        $followedPelatihan = $loggedInUser->pelatihan;
-
-        return view('home', compact('createdPengusulan', 'followedPelatihan'));
+        return view('home', [
+            'createdPengusulan' => Pengusulan::where('id_karyawan', $loggedInUser->id)->get(),
+            'followedPelatihan' => $loggedInUser->pelatihan,
+            'unansweredPelatihanQuiz' => Pelatihan::whereDoesntHave('jawabanKuisonerPelatihanKaryawan', function ($query) use ($loggedInUser) {
+                $query->where('id_karyawan', $loggedInUser->id);
+            })->whereHas('karyawan', function ($query) use ($loggedInUser) {
+                $query->where('karyawan.id', $loggedInUser->id);
+            })->where('status', true)->get(),
+        ]);
     }
 }
