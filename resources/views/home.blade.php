@@ -70,18 +70,16 @@
                         <thead>
                             <tr>
                                 <th>Pelatihan</th>
-                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($unansweredPelatihanQuiz as $pelatihan)
                                 <tr>
-                                    <td>{{ $pelatihan->nama }}</td>
-                                    <td>{{ $pelatihan->getStatus() }}</td>
+                                    <td align="center">{{ $pelatihan->nama }}</td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td align="center" colspan="2">Tidak ada kuisoner untuk saat ini</td>
+                                    <td align="center">Tidak ada kuisoner untuk saat ini</td>
                                 </tr>
                             @endforelse
                         </tbody>
