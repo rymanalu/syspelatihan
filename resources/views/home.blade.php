@@ -75,7 +75,9 @@
                         <tbody>
                             @forelse ($unansweredPelatihanQuiz as $pelatihan)
                                 <tr>
-                                    <td align="center">{{ $pelatihan->nama }}</td>
+                                    <td align="center">
+                                        <a href="{{ route('jawab_kuisoner.create', $pelatihan) }}">{{ $pelatihan->nama }}</a>
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>
