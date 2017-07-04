@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use DB;
+use Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
                 ]);
             });
         }
+
+        Schema::defaultStringLength(191);
     }
 
     /**
