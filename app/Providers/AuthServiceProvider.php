@@ -32,6 +32,13 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        Gate::define('viewDataMasterMenu', function ($user) {
+            return $user->can('viewAll', 'App\\Divisi') ||
+                   $user->can('viewAll', 'App\\Karyawan') ||
+                   $user->can('viewAll', 'App\\Provider') ||
+                   $user->can('viewAll', 'App\\UnitKerja');
+        });
+
         //
     }
 }

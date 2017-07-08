@@ -35,55 +35,7 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        @can('viewAll', App\Divisi::class)
-                            <li>
-                                <a href="{{ route('divisi.index') }}">Divisi</a>
-                            </li>
-                        @endcan
-
-                        @can('viewAll', App\Karyawan::class)
-                            <li>
-                                <a href="{{ route('karyawan.index') }}">Karyawan</a>
-                            </li>
-                        @endcan
-
-                        @can('viewAll', App\Provider::class)
-                            <li>
-                                <a href="{{ route('provider.index') }}">Provider</a>
-                            </li>
-                        @endcan
-
-                        @can('viewAll', App\Pelatihan::class)
-                            <li>
-                                <a href="{{ route('pelatihan.index') }}">Pelatihan</a>
-                            </li>
-                        @endcan
-
-                        @can('viewAll', App\UnitKerja::class)
-                            <li>
-                                <a href="{{ route('unit_kerja.index') }}">Unit Kerja</a>
-                            </li>
-                        @endcan
-
-                        @can('viewAll', App\Pengusulan::class)
-                            <li>
-                                <a href="{{ route('pengusulan.index') }}">Pengusulan</a>
-                            </li>
-                        @endcan
-
-                        @can('viewAll', App\EvaluasiPelatihan::class)
-                            <li>
-                                <a href="{{ route('evaluasi_pelatihan.index') }}">Evaluasi Pelatihan</a>
-                            </li>
-                        @endcan
-
-                        @can('viewAll', App\KuisonerPelatihan::class)
-                            <li>
-                                <a href="{{ route('kuisoner_pelatihan.index') }}">Kuisoner Pelatihan</a>
-                            </li>
-                        @endcan
-                    </ul>
+                    @include('layouts.menu')
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
