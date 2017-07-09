@@ -44,7 +44,7 @@
                                         @include('shared.action', [
                                             'editUrl' => route('karyawan.edit', $karyawan),
                                             'deleteUrl' => route('karyawan.destroy', $karyawan),
-                                            'hide' => $karyawan->isAdmin() || Auth::user()->id == $karyawan->id,
+                                            'hideDelete' => $karyawan->isAdmin() || Auth::user()->id == $karyawan->id,
                                         ])
                                     </td>
                                 </tr>

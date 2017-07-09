@@ -20,7 +20,7 @@ class ProviderPolicy extends Policy
     }
 
     /**
-     * Determine whether the user can create divisis.
+     * Determine whether the user can create provider.
      *
      * @param  \App\Karyawan  $user
      * @return mixed

@@ -20,7 +20,7 @@ class PelatihanPolicy extends Policy
     }
 
     /**
-     * Determine whether the user can create divisis.
+     * Determine whether the user can create pelatihan.
      *
      * @param  \App\Karyawan  $user
      * @return mixed

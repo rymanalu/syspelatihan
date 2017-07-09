@@ -20,7 +20,7 @@ class UnitKerjaPolicy extends Policy
     }
 
     /**
-     * Determine whether the user can create divisis.
+     * Determine whether the user can create unit kerja.
      *
      * @param  \App\Karyawan  $user
      * @return mixed

@@ -8,7 +8,7 @@ use App\EvaluasiPelatihan;
 class EvaluasiPelatihanPolicy extends Policy
 {
     /**
-     * Determine whether the user can view the evaluasiPelatihan.
+     * Determine whether the user can view the evaluasi pelatihan.
      *
      * @param  \App\Karyawan  $user
      * @param  \App\EvaluasiPelatihan  $evaluasiPelatihan
@@ -20,7 +20,7 @@ class EvaluasiPelatihanPolicy extends Policy
     }
 
     /**
-     * Determine whether the user can create evaluasiPelatihans.
+     * Determine whether the user can create evaluasi pelatihan.
      *
      * @param  \App\Karyawan  $user
      * @return mixed
@@ -31,7 +31,7 @@ class EvaluasiPelatihanPolicy extends Policy
     }
 
     /**
-     * Determine whether the user can update the evaluasiPelatihan.
+     * Determine whether the user can update the evaluasi pelatihan.
      *
      * @param  \App\Karyawan  $user
      * @param  \App\EvaluasiPelatihan  $evaluasiPelatihan
@@ -43,7 +43,7 @@ class EvaluasiPelatihanPolicy extends Policy
     }
 
     /**
-     * Determine whether the user can delete the evaluasiPelatihan.
+     * Determine whether the user can delete the evaluasi pelatihan.
      *
      * @param  \App\Karyawan  $user
      * @param  \App\EvaluasiPelatihan  $evaluasiPelatihan

@@ -8,7 +8,7 @@ use App\KuisonerPelatihan;
 class KuisonerPelatihanPolicy extends Policy
 {
     /**
-     * Determine whether the user can view the kuisonerPelatihan.
+     * Determine whether the user can view the kuisoner pelatihan.
      *
      * @param  \App\Karyawan  $user
      * @param  \App\KuisonerPelatihan  $kuisonerPelatihan
@@ -20,7 +20,7 @@ class KuisonerPelatihanPolicy extends Policy
     }
 
     /**
-     * Determine whether the user can create kuisonerPelatihans.
+     * Determine whether the user can create kuisoner pelatihan.
      *
      * @param  \App\Karyawan  $user
      * @return mixed
@@ -31,7 +31,7 @@ class KuisonerPelatihanPolicy extends Policy
     }
 
     /**
-     * Determine whether the user can update the kuisonerPelatihan.
+     * Determine whether the user can update the kuisoner pelatihan.
      *
      * @param  \App\Karyawan  $user
      * @param  \App\KuisonerPelatihan  $kuisonerPelatihan
@@ -43,7 +43,7 @@ class KuisonerPelatihanPolicy extends Policy
     }
 
     /**
-     * Determine whether the user can delete the kuisonerPelatihan.
+     * Determine whether the user can delete the kuisoner pelatihan.
      *
      * @param  \App\Karyawan  $user
      * @param  \App\KuisonerPelatihan  $kuisonerPelatihan

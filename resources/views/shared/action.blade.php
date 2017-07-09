@@ -1,8 +1,12 @@
-<a class="btn btn-success"
-    href="{{ $editUrl }}">
-    Ubah
-</a>
-@if (isset($hide) && $hide)
+@if (isset($hideEdit) && $hideEdit)
+@else
+    <a class="btn btn-success"
+        href="{{ $editUrl }}">
+        Ubah
+    </a>
+@endif
+
+@if (isset($hideDelete) && $hideDelete)
 @else
     <a class="btn btn-danger"
         href="{{ $deleteUrl }}"

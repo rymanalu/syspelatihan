@@ -19,7 +19,7 @@ class KaryawanPolicy extends Policy
     }
 
     /**
-     * Determine whether the user can create divisis.
+     * Determine whether the user can create karyawan.
      *
      * @param  \App\Karyawan  $user
      * @return mixed

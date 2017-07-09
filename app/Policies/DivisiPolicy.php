@@ -20,7 +20,7 @@ class DivisiPolicy extends Policy
     }
 
     /**
-     * Determine whether the user can create divisis.
+     * Determine whether the user can create divisi.
      *
      * @param  \App\Karyawan  $user
      * @return mixed

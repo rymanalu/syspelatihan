@@ -24,7 +24,7 @@ class PengusulanPolicy
     }
 
     /**
-     * Determine whether the user can create divisis.
+     * Determine whether the user can create pengusulan.
      *
      * @param  \App\Karyawan  $user
      * @return mixed
