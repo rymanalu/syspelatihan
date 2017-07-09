@@ -33,6 +33,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('evaluasi_pelatihan', 'EvaluasiPelatihanController', ['except' => 'show']);
 
+    Route::resource('kategori_pelatihan', 'KategoriPelatihanController', ['except' => 'show']);
+
     Route::resource('kuisoner_pelatihan', 'KuisonerPelatihanController', ['except' => 'show']);
 
     Route::get('jawab_kuisoner/{pelatihan}', 'JawabKuisonerPelatihanController@create')->name('jawab_kuisoner.create');

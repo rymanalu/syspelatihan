@@ -18,6 +18,12 @@
                     </li>
                 @endcan
 
+                @can('viewAll', \App\KategoriPelatihan::class)
+                    <li>
+                        <a href="{{ route('kategori_pelatihan.index') }}">Kategori Pelatihan</a>
+                    </li>
+                @endcan
+
                 @can('viewAll', \App\Provider::class)
                     <li>
                         <a href="{{ route('provider.index') }}">Provider</a>
