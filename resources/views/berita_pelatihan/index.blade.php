@@ -34,7 +34,9 @@
                                     <td align="right">{{ $loop->iteration }}</td>
                                     <td>{{ $beritaPelatihan->provider->nama }}</td>
                                     <td>{{ $beritaPelatihan->kategoriPelatihan->nama }}</td>
-                                    <td>{{ $beritaPelatihan->nama }}</td>
+                                    <td>
+                                        <a href="{{ route('berita_pelatihan.show', $beritaPelatihan) }}">{{ $beritaPelatihan->nama }}</a>
+                                    </td>
                                     <td>{{ $beritaPelatihan->tanggal_mulai ? $beritaPelatihan->tanggal_mulai->format('d M Y') : '' }}</td>
                                     <td>{{ $beritaPelatihan->tanggal_selesai ? $beritaPelatihan->tanggal_selesai->format('d M Y') : '' }}</td>
                                     <td>{{ $beritaPelatihan->biayaPerOrang() }}</td>

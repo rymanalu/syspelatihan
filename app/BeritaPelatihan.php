@@ -25,6 +25,11 @@ class BeritaPelatihan extends Model
         return $this->belongsTo(Provider::class, 'id_provider');
     }
 
+    public function komentar()
+    {
+        return $this->hasMany(KomentarBeritaPelatihan::class, 'id_berita_pelatihan');
+    }
+
     public function kategoriPelatihan()
     {
         return $this->belongsTo(KategoriPelatihan::class, 'id_kategori_pelatihan');

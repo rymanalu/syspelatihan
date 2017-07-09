@@ -64,7 +64,7 @@ class BeritaPelatihanController extends Controller
      */
     public function show(BeritaPelatihan $beritaPelatihan)
     {
-        //
+        return view('berita_pelatihan.show', compact('beritaPelatihan'));
     }
 
     /**
