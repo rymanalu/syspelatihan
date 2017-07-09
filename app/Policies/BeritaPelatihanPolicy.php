@@ -4,13 +4,11 @@ namespace App\Policies;
 
 use App\Karyawan;
 use App\BeritaPelatihan;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
-class BeritaPelatihanPolicy extends Policy
+class BeritaPelatihanPolicy
 {
-    public function before(Karyawan $user, $ability)
-    {
-        return true;
-    }
+    use ViewAllPolicy, HandlesAuthorization;
 
     /**
      * Determine whether the user can view the berita pelatihan.

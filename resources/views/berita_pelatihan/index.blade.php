@@ -7,9 +7,11 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Berita Pelatihan
-                    <div class="pull-right">
-                        <a class="btn btn-primary" href="{{ route('berita_pelatihan.create') }}">Tambah</a>
-                    </div>
+                    @can('create', \App\BeritaPelatihan::class)
+                        <div class="pull-right">
+                            <a class="btn btn-primary" href="{{ route('berita_pelatihan.create') }}">Tambah</a>
+                        </div>
+                    @endcan
                 </div>
 
                 <div class="panel-body">
@@ -40,13 +42,17 @@
                                     <td>{{ $beritaPelatihan->tanggal_mulai ? $beritaPelatihan->tanggal_mulai->format('d M Y') : '' }}</td>
                                     <td>{{ $beritaPelatihan->tanggal_selesai ? $beritaPelatihan->tanggal_selesai->format('d M Y') : '' }}</td>
                                     <td>{{ $beritaPelatihan->biayaPerOrang() }}</td>
-                                    <td><img class="img-thumbnail img-responsive" src="{{ file_url($beritaPelatihan->brosur) }}"></td>
+                                    <td>
+                                        <a href="{{ route('berita_pelatihan.show', $beritaPelatihan) }}">
+                                            <img class="img-thumbnail img-responsive" src="{{ file_url($beritaPelatihan->brosur) }}">
+                                        </a>
+                                    </td>
                                     <td>{{ $beritaPelatihan->catatan }}</td>
                                     <td align="center">
                                         @include('shared.action', [
                                             'editUrl' => route('berita_pelatihan.edit', $beritaPelatihan),
                                             'deleteUrl' => route('berita_pelatihan.destroy', $beritaPelatihan),
-                                            'hideEdit' => ! Auth::user()->can('edit', $beritaPelatihan),
+                                            'hideEdit' => ! Auth::user()->can('update', $beritaPelatihan),
                                             'hideDelete' => ! Auth::user()->can('delete', $beritaPelatihan),
                                         ])
                                     </td>
