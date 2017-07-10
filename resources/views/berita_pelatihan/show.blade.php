@@ -94,6 +94,40 @@
                 <p align="center"><strong>Tidak ada komentar untuk saat ini.</strong></p>
             </div>
         @endforelse
+
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Tambah Komentar
+                </div>
+
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('berita_pelatihan.tambah_komentar', $beritaPelatihan) }}">
+                        {{ csrf_field() }}
+
+                        <div class="form-group{{ $errors->has('komentar') ? ' has-error' : '' }}">
+                            <div class="col-md-12">
+                                <textarea class="form-control" cols="5" rows="5" name="komentar">{{ old('komentar') }}</textarea>
+
+                                @if ($errors->has('komentar'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('komentar') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-2 col-md-offset-10">
+                                <button type="submit" class="btn btn-primary">
+                                    Simpan
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

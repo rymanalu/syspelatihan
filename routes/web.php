@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('pengusulan', 'PengusulanController', ['except' => 'show']);
 
     Route::resource('berita_pelatihan', 'BeritaPelatihanController');
+    Route::post('berita_pelatihan/{beritaPelatihan}/komentar', 'KomentarBeritaPelatihanController@tambahKomentar')->name('berita_pelatihan.tambah_komentar');
 
     Route::resource('evaluasi_pelatihan', 'EvaluasiPelatihanController', ['except' => 'show']);
 
