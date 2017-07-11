@@ -16,10 +16,11 @@ class Pelatihan extends Model
 
     protected $casts = [
         'status' => 'boolean',
+        'is_evaluated' => 'boolean',
         'biaya_per_orang' => 'integer',
     ];
 
-    protected $fillable = ['id_provider', 'nama', 'tanggal_mulai', 'tanggal_selesai', 'biaya_per_orang', 'brosur', 'catatan', 'status'];
+    protected $fillable = ['id_provider', 'nama', 'tanggal_mulai', 'tanggal_selesai', 'biaya_per_orang', 'brosur', 'catatan', 'status', 'is_evaluated'];
 
     public function provider()
     {

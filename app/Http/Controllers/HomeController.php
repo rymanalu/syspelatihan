@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\Peran;
 use App\Pelatihan;
 use App\Pengusulan;
 
@@ -35,6 +36,8 @@ class HomeController extends Controller
             })->whereHas('karyawan', function ($query) use ($loggedInUser) {
                 $query->where('karyawan.id', $loggedInUser->id);
             })->where('status', true)->get(),
+            'unansweredPelatihanEvaluation' => Pelatihan::where('status', true)->where('is_evaluated', false)->get(['id', 'nama']),
+            'isUser' => $loggedInUser->peran->nama === Peran::USER,
         ]);
     }
 }

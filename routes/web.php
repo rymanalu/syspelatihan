@@ -42,4 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('jawab_kuisoner/{pelatihan}', 'JawabKuisonerPelatihanController@create')->name('jawab_kuisoner.create');
     Route::post('jawab_kuisoner/{pelatihan}', 'JawabKuisonerPelatihanController@store')->name('jawab_kuisoner.store');
+
+    Route::get('jawab_evaluasi/{pelatihan}', 'JawabEvaluasiPelatihanController@create')->name('jawab_evaluasi.create');
+    Route::post('jawab_evaluasi/{pelatihan}', 'JawabEvaluasiPelatihanController@store')->name('jawab_evaluasi.store');
 });

@@ -63,7 +63,13 @@
 
         <div class="col-md-4">
             <div class="panel panel-default">
-                <div class="panel-heading">Kuisoner yang belum Anda isi</div>
+                <div class="panel-heading">
+                    @if ($isUser)
+                        Kuisoner yang belum Anda isi
+                    @else
+                        Evaluasi yang belum Anda isi
+                    @endif
+                </div>
 
                 <div class="panel-body">
                     <table class="table table-hover table-responsive">
@@ -73,17 +79,31 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($unansweredPelatihanQuiz as $pelatihan)
-                                <tr>
-                                    <td align="center">
-                                        <a href="{{ route('jawab_kuisoner.create', $pelatihan) }}">{{ $pelatihan->nama }}</a>
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td align="center">Tidak ada kuisoner untuk saat ini</td>
-                                </tr>
-                            @endforelse
+                            @if ($isUser)
+                                @forelse ($unansweredPelatihanQuiz as $pelatihan)
+                                    <tr>
+                                        <td align="center">
+                                            <a href="{{ route('jawab_kuisoner.create', $pelatihan) }}">{{ $pelatihan->nama }}</a>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td align="center">Tidak ada kuisoner untuk saat ini</td>
+                                    </tr>
+                                @endforelse
+                            @else
+                                @forelse ($unansweredPelatihanEvaluation as $pelatihan)
+                                    <tr>
+                                        <td align="center">
+                                            <a href="{{ route('jawab_evaluasi.create', $pelatihan) }}">{{ $pelatihan->nama }}</a>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td align="center">Tidak ada evaluasi untuk saat ini</td>
+                                    </tr>
+                                @endforelse
+                            @endif
                         </tbody>
                     </table>
                 </div>
