@@ -22,7 +22,9 @@ class JawabEvaluasiPelatihanController extends Controller
 
         $semuaEvaluasi = $semuaEvaluasi->merge($pelatihan->evaluasi);
 
-        return view('jawab_evaluasi.create', compact('pelatihan', 'semuaEvaluasi'));
+        $semuaKaryawan = $pelatihan->karyawan;
+
+        return view('jawab_evaluasi.create', compact('pelatihan', 'semuaEvaluasi', 'semuaKaryawan'));
     }
 
     /**
@@ -34,13 +36,15 @@ class JawabEvaluasiPelatihanController extends Controller
      */
     public function store(JawabEvaluasiPelatihanRequest $request, Pelatihan $pelatihan)
     {
-        foreach ($request->input('evaluasi') as $aspek => $jawaban) {
-            DB::table('penilaian_evaluasi')
-                ->insert([
-                    'id_evaluasi_pelatihan' => $aspek,
-                    'id_karyawan' => Auth::user()->id,
-                    'nilai' => $jawaban,
-                ]);
+        foreach ($request->input('evaluasi') as $evaluasi) {
+            foreach ($evaluasi['jawaban'] as $aspek => $nilai) {
+                DB::table('penilaian_evaluasi')
+                    ->insert([
+                        'nilai' => $nilai,
+                        'id_evaluasi_pelatihan' => $aspek,
+                        'id_karyawan' => $evaluasi['karyawan'],
+                    ]);
+            }
         }
 
         $pelatihan->update(['is_evaluated' => true]);

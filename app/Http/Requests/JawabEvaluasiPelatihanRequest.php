@@ -24,7 +24,8 @@ class JawabEvaluasiPelatihanRequest extends FormRequest
     public function rules()
     {
         return [
-            'evaluasi.*' => 'required|min:0|max:5',
+            'evaluasi.*.karyawan' => 'required',
+            'evaluasi.*.jawaban.*' => 'required|min:0|max:5',
         ];
     }
 }
