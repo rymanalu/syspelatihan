@@ -38,7 +38,9 @@ class AuthServiceProvider extends ServiceProvider
             return $user->can('viewAll', 'App\\Divisi') ||
                    $user->can('viewAll', 'App\\Karyawan') ||
                    $user->can('viewAll', 'App\\Provider') ||
-                   $user->can('viewAll', 'App\\UnitKerja');
+                   $user->can('viewAll', 'App\\UnitKerja') ||
+                   $user->can('viewAll', 'App\\EvaluasiPelatihan') ||
+                   $user->can('viewAll', 'App\\KuisonerPelatihan');
         });
 
         //

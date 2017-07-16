@@ -12,6 +12,12 @@
                     </li>
                 @endcan
 
+                @can('viewAll', \App\EvaluasiPelatihan::class)
+                    <li>
+                        <a href="{{ route('evaluasi_pelatihan.index') }}">Evaluasi Pelatihan</a>
+                    </li>
+                @endcan
+
                 @can('viewAll', \App\Karyawan::class)
                     <li>
                         <a href="{{ route('karyawan.index') }}">Karyawan</a>
@@ -21,6 +27,12 @@
                 @can('viewAll', \App\KategoriPelatihan::class)
                     <li>
                         <a href="{{ route('kategori_pelatihan.index') }}">Kategori Pelatihan</a>
+                    </li>
+                @endcan
+
+                @can('viewAll', \App\KuisonerPelatihan::class)
+                    <li>
+                        <a href="{{ route('kuisoner_pelatihan.index') }}">Kuisoner Pelatihan</a>
                     </li>
                 @endcan
 
@@ -54,18 +66,6 @@
     @can('viewAll', \App\Pengusulan::class)
         <li>
             <a href="{{ route('pengusulan.index') }}">Pengusulan</a>
-        </li>
-    @endcan
-
-    @can('viewAll', \App\EvaluasiPelatihan::class)
-        <li>
-            <a href="{{ route('evaluasi_pelatihan.index') }}">Evaluasi Pelatihan</a>
-        </li>
-    @endcan
-
-    @can('viewAll', \App\KuisonerPelatihan::class)
-        <li>
-            <a href="{{ route('kuisoner_pelatihan.index') }}">Kuisoner Pelatihan</a>
         </li>
     @endcan
 </ul>
