@@ -68,4 +68,10 @@
             <a href="{{ route('pengusulan.index') }}">Pengusulan</a>
         </li>
     @endcan
+
+    @can('viewHasilEvaluasi')
+        <li>
+            <a href="{{ route('hasil_evaluasi.index') }}">Hasil Evaluasi</a>
+        </li>
+    @endcan
 </ul>

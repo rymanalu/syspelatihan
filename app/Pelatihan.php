@@ -42,6 +42,16 @@ class Pelatihan extends Model
         return $this->belongsToMany(Karyawan::class, 'jawaban_kuisoner_pelatihan', 'id_pelatihan', 'id_karyawan')->withPivot('jawaban');
     }
 
+    public function penilaianKaryawan()
+    {
+        return $this->belongsToMany(Karyawan::class, 'penilaian_evaluasi', 'id_pelatihan', 'id_karyawan')->withPivot('id_evaluasi_pelatihan', 'nilai');
+    }
+
+    public function penilaianAspek()
+    {
+        return $this->belongsToMany(EvaluasiPelatihan::class, 'penilaian_evaluasi', 'id_pelatihan', 'id_evaluasi_pelatihan')->withPivot('id_karyawan', 'nilai');
+    }
+
     public function karyawan()
     {
         return $this->belongsToMany(Karyawan::class, 'karyawan_pelatihan', 'id_pelatihan', 'id_karyawan');

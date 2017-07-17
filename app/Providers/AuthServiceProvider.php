@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Peran;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -41,6 +42,10 @@ class AuthServiceProvider extends ServiceProvider
                    $user->can('viewAll', 'App\\UnitKerja') ||
                    $user->can('viewAll', 'App\\EvaluasiPelatihan') ||
                    $user->can('viewAll', 'App\\KuisonerPelatihan');
+        });
+
+        Gate::define('viewHasilEvaluasi', function ($user) {
+            return $user->peran->nama !== Peran::USER;
         });
 
         //

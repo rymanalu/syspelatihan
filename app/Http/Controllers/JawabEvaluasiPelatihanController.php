@@ -41,6 +41,7 @@ class JawabEvaluasiPelatihanController extends Controller
                 DB::table('penilaian_evaluasi')
                     ->insert([
                         'nilai' => $nilai,
+                        'id_pelatihan' => $pelatihan->id,
                         'id_evaluasi_pelatihan' => $aspek,
                         'id_karyawan' => $evaluasi['karyawan'],
                     ]);
