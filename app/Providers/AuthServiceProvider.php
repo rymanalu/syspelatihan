@@ -48,6 +48,10 @@ class AuthServiceProvider extends ServiceProvider
             return $user->peran->nama !== Peran::USER;
         });
 
+        Gate::define('viewHasilKuisoner', function ($user) {
+            return $user->can('viewHasilEvaluasi');
+        });
+
         //
     }
 }

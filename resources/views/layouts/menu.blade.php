@@ -74,4 +74,10 @@
             <a href="{{ route('hasil_evaluasi.index') }}">Hasil Evaluasi</a>
         </li>
     @endcan
+
+    @can('viewHasilKuisoner')
+        <li>
+            <a href="{{ route('hasil_kuisoner.index') }}">Hasil Kuisoner</a>
+        </li>
+    @endcan
 </ul>
