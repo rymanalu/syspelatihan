@@ -66,4 +66,9 @@ class Pelatihan extends Model
     {
         return $this->status ? 'Sudah Dilaksanakan' : 'Belum Dilaksanakan';
     }
+
+    public function peningkatan()
+    {
+        return $this->hasMany(PeningkatanPelatihan::class, 'id_pelatihan');
+    }
 }

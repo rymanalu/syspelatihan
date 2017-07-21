@@ -24,6 +24,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\EvaluasiPelatihan' => 'App\Policies\EvaluasiPelatihanPolicy',
         'App\KategoriPelatihan' => 'App\Policies\KategoriPelatihanPolicy',
         'App\KuisonerPelatihan' => 'App\Policies\KuisonerPelatihanPolicy',
+        'App\PeningkatanPelatihan' => 'App\Policies\PeningkatanPelatihanPolicy',
     ];
 
     /**
@@ -50,6 +51,12 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('viewHasilKuisoner', function ($user) {
             return $user->can('viewHasilEvaluasi');
+        });
+
+        Gate::define('viewAllPelatihan', function ($user) {
+            return $user->can('viewAll', 'App\\BeritaPelatihan') ||
+                    $user->can('viewAll', 'App\\Pelatihan') ||
+                    $user->can('create', 'App\\PeningkatanPelatihan');
         });
 
         //

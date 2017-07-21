@@ -51,15 +51,31 @@
         </li>
     @endcan
 
-    @can('viewAll', \App\BeritaPelatihan::class)
-        <li>
-            <a href="{{ route('berita_pelatihan.index') }}">Berita Pelatihan</a>
-        </li>
-    @endcan
+    @can('viewAllPelatihan')
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                Pelatihan <span class="caret"></span>
+            </a>
 
-    @can('viewAll', \App\Pelatihan::class)
-        <li>
-            <a href="{{ route('pelatihan.index') }}">Pelatihan</a>
+            <ul class="dropdown-menu" role="menu">
+                @can('viewAll', \App\BeritaPelatihan::class)
+                    <li>
+                        <a href="{{ route('berita_pelatihan.index') }}">Berita Pelatihan</a>
+                    </li>
+                @endcan
+
+                @can('viewAll', \App\Pelatihan::class)
+                    <li>
+                        <a href="{{ route('pelatihan.index') }}">Pelatihan</a>
+                    </li>
+                @endcan
+
+                @can('create', \App\PeningkatanPelatihan::class)
+                    <li>
+                        <a href="{{ route('peningkatan_pelatihan.index') }}">Peningkatan Pelatihan</a>
+                    </li>
+                @endcan
+            </ul>
         </li>
     @endcan
 

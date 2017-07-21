@@ -46,6 +46,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('jawab_evaluasi/{pelatihan}', 'JawabEvaluasiPelatihanController@create')->name('jawab_evaluasi.create');
     Route::post('jawab_evaluasi/{pelatihan}', 'JawabEvaluasiPelatihanController@store')->name('jawab_evaluasi.store');
 
+    Route::get('peningkatan_pelatihan', 'PeningkatanPelatihanController@index')->name('peningkatan_pelatihan.index');
+    Route::post('peningkatan_pelatihan/{pelatihan}', 'PeningkatanPelatihanController@store')->name('peningkatan_pelatihan.store');
+
     Route::get('hasil_evaluasi', 'HasilEvaluasiController@index')->name('hasil_evaluasi.index');
 
     Route::get('hasil_kuisoner', 'HasilKuisonerController@index')->name('hasil_kuisoner.index');
