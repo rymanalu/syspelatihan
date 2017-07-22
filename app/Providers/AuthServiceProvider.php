@@ -59,6 +59,10 @@ class AuthServiceProvider extends ServiceProvider
                     $user->can('create', 'App\\PeningkatanPelatihan');
         });
 
+        Gate::define('viewHasilPeningkatanPelatihan', function ($user) {
+            return $user->isAdmin();
+        });
+
         //
     }
 }

@@ -96,4 +96,10 @@
             <a href="{{ route('hasil_kuisoner.index') }}">Hasil Kuisoner</a>
         </li>
     @endcan
+
+    @can('viewHasilPeningkatanPelatihan')
+        <li>
+            <a href="{{ route('hasil_peningkatan_pelatihan.index') }}">Peningkatan Pelatihan</a>
+        </li>
+    @endcan
 </ul>

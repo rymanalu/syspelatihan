@@ -52,4 +52,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('hasil_evaluasi', 'HasilEvaluasiController@index')->name('hasil_evaluasi.index');
 
     Route::get('hasil_kuisoner', 'HasilKuisonerController@index')->name('hasil_kuisoner.index');
+
+    Route::get('hasil_peningkatan_pelatihan', 'HasilPeningkatanPelatihanController@index')->name('hasil_peningkatan_pelatihan.index');
+    Route::post('hasil_peningkatan_pelatihan/{pelatihan}', 'HasilPeningkatanPelatihanController@data')->name('hasil_peningkatan_pelatihan.data');
 });
