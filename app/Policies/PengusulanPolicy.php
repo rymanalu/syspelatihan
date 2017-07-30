@@ -9,7 +9,18 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PengusulanPolicy
 {
-    use ViewAllPolicy, HandlesAuthorization;
+    use HandlesAuthorization;
+
+    /**
+     * Determine whether the user can view a listing of the resource.
+     *
+     * @param  \App\Karyawan  $user
+     * @return mixed
+     */
+    public function viewAll(Karyawan $user)
+    {
+        return $user->peran->nama !== Peran::USER;
+    }
 
     /**
      * Determine whether the user can view the pengusulan.
@@ -20,7 +31,7 @@ class PengusulanPolicy
      */
     public function view(Karyawan $user, Pengusulan $pengusulan)
     {
-        return true;
+        return $this->create($user);
     }
 
     /**
@@ -31,7 +42,7 @@ class PengusulanPolicy
      */
     public function create(Karyawan $user)
     {
-        return true;
+        return $this->approve($user) || $user->peran->nama === Peran::MANAJER1;
     }
 
     /**
@@ -43,7 +54,7 @@ class PengusulanPolicy
      */
     public function update(Karyawan $user, Pengusulan $pengusulan)
     {
-        return true;
+        return $this->create($user) && $user->id_unit_kerja == $pengusulan->karyawan->id_unit_kerja;
     }
 
     /**
@@ -55,11 +66,11 @@ class PengusulanPolicy
      */
     public function delete(Karyawan $user, Pengusulan $pengusulan)
     {
-        return true;
+        return $this->update($user, $pengusulan) || $user->peran->nama === Peran::ADMIN;
     }
 
-    public function approve1(Karyawan $user)
+    public function approve(Karyawan $user)
     {
-        return $user->peran->nama !== Peran::USER;
+        return $user->peran->nama === Peran::MANAJER2;
     }
 }

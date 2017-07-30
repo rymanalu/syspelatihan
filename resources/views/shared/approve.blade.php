@@ -1,4 +1,4 @@
-@can('approve1', App\Pengusulan::class)
+@can('approve', App\Pengusulan::class)
     <a class="btn btn-warning"
         href="{{ route('pengusulan.approve', $pengusulan) }}"
         onclick="event.preventDefault();

@@ -62,4 +62,18 @@ class Karyawan extends Authenticatable
     {
         return $this->jenis_kelamin == 1 ? 'Laki-laki' : 'Perempuan';
     }
+
+    public function bawahan()
+    {
+        if (! in_array($this->peran->nama, [Peran::MANAJER1, Peran::MANAJER2])) {
+            return collect();
+        }
+
+        return $this->unitKerja
+                    ->karyawan()
+                    ->join('peran', 'peran.id', '=', 'karyawan.id_peran')
+                    ->where('peran.nama', Peran::USER)
+                    ->select('karyawan.*')
+                    ->get();
+    }
 }

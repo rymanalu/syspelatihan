@@ -29,7 +29,11 @@ class PengusulanController extends Controller
      */
     public function create()
     {
-        return view('pengusulan.create', ['pengusulan' => new Pengusulan]);
+        return view('pengusulan.create', [
+            'pengusulan' => new Pengusulan,
+            'karyawan' => [],
+            'bawahan' => Auth::user()->bawahan()->pluck('nama', 'id'),
+        ]);
     }
 
     /**
@@ -41,12 +45,11 @@ class PengusulanController extends Controller
     public function store(PengusulanRequest $request)
     {
         $data = $request->only('keterangan_pelatihan', 'target_hasil_pelatihan', 'catatan');
-
         $data['id_karyawan'] = Auth::user()->id;
-
         $data['tanggal_pengajuan'] = date('Y-m-d');
 
-        Pengusulan::create($data);
+        $pengusulan = Pengusulan::create($data);
+        $pengusulan->karyawans()->attach($request->input('karyawans'));
 
         return redirect()->route('pengusulan.index');
     }
@@ -70,7 +73,11 @@ class PengusulanController extends Controller
      */
     public function edit(Pengusulan $pengusulan)
     {
-        return view('pengusulan.edit', compact('pengusulan'));
+        $bawahan = Auth::user()->bawahan()->pluck('nama', 'id');
+
+        $karyawan = $pengusulan->karyawans->pluck('id')->toArray();
+
+        return view('pengusulan.edit', compact('pengusulan', 'bawahan', 'karyawan'));
     }
 
     /**
@@ -85,6 +92,8 @@ class PengusulanController extends Controller
         $pengusulan->update(
             $request->only('keterangan_pelatihan', 'target_hasil_pelatihan', 'catatan')
         );
+
+        $pengusulan->karyawans()->sync($request->input('karyawans'));
 
         return redirect()->route('pengusulan.index');
     }

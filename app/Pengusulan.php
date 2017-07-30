@@ -25,6 +25,11 @@ class Pengusulan extends Model
         return $this->belongsTo(Karyawan::class, 'id_karyawan');
     }
 
+    public function karyawans()
+    {
+        return $this->belongsToMany(Karyawan::class, 'karyawan_pengusulan', 'id_pengusulan', 'id_karyawan');
+    }
+
     public function status()
     {
         switch ($this->status) {

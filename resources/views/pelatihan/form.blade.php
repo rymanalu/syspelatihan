@@ -8,6 +8,26 @@
     </div>
 @endif
 
+@if ($isCreate)
+    <div class="form-group{{ $errors->has('id_pengusulan') ? ' has-error' : '' }}">
+        <label for="id_pengusulan" class="col-md-3 control-label">Pengusulan</label>
+
+        <div class="col-md-9">
+            <select class="form-control" name="id_pengusulan">
+                @foreach ($semuaPengusulan as $id => $pengusulan)
+                    <option value="{{ $id }}">{{ $pengusulan }}</option>
+                @endforeach
+            </select>
+
+            @if ($errors->has('id_pengusulan'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('id_pengusulan') }}</strong>
+                </span>
+            @endif
+        </div>
+    </div>
+@endif
+
 <div class="form-group{{ $errors->has('id_provider') ? ' has-error' : '' }}">
     <label for="id_provider" class="col-md-3 control-label">Provider</label>
 
@@ -68,23 +88,25 @@
     </div>
 </div>
 
-<div class="form-group{{ $errors->has('karyawan') ? ' has-error' : '' }}">
-    <label for="karyawan" class="col-md-3 control-label">Karyawan</label>
+@if (! $isCreate)
+    <div class="form-group{{ $errors->has('karyawan') ? ' has-error' : '' }}">
+        <label for="karyawan" class="col-md-3 control-label">Karyawan</label>
 
-    <div class="col-md-9">
-        <select class="form-control" name="karyawan[]" multiple="multiple">
-            @foreach ($semuaKaryawan as $id => $karyawan)
-                <option value="{{ $id }}"{{ $pelatihan->karyawan()->where('id_karyawan', $id)->count() ? ' selected' : '' }}>{{ $karyawan }}</option>
-            @endforeach
-        </select>
+        <div class="col-md-9">
+            <select class="form-control" name="karyawan[]" multiple="multiple">
+                @foreach ($semuaKaryawan as $id => $karyawan)
+                    <option value="{{ $id }}"{{ $pelatihan->karyawan()->where('id_karyawan', $id)->count() ? ' selected' : '' }}>{{ $karyawan }}</option>
+                @endforeach
+            </select>
 
-        @if ($errors->has('karyawan'))
-            <span class="help-block">
-                <strong>{{ $errors->first('karyawan') }}</strong>
-            </span>
-        @endif
+            @if ($errors->has('karyawan'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('karyawan') }}</strong>
+                </span>
+            @endif
+        </div>
     </div>
-</div>
+@endif
 
 <div class="form-group{{ $errors->has('biaya_per_orang') ? ' has-error' : '' }}">
     <label for="biaya_per_orang" class="col-md-3 control-label">Biaya Per Orang</label>

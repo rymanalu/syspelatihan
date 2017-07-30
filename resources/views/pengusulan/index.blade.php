@@ -7,9 +7,12 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Pengusulan
-                    <div class="pull-right">
-                        <a class="btn btn-primary" href="{{ route('pengusulan.create') }}">Tambah</a>
-                    </div>
+
+                    @can('create', \App\Pengusulan::class)
+                        <div class="pull-right">
+                            <a class="btn btn-primary" href="{{ route('pengusulan.create') }}">Tambah</a>
+                        </div>
+                    @endcan
                 </div>
 
                 <div class="panel-body">
@@ -44,6 +47,8 @@
                                         @include('shared.action', [
                                             'editUrl' => route('pengusulan.edit', $pengusulan),
                                             'deleteUrl' => route('pengusulan.destroy', $pengusulan),
+                                            'hideEdit' => ! Auth::user()->can('update', $pengusulan),
+                                            'hideDelete' => ! Auth::user()->can('delete', $pengusulan),
                                         ])
                                     </td>
                                 </tr>

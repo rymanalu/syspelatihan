@@ -26,6 +26,7 @@ class PengusulanRequest extends FormRequest
         return [
             'keterangan_pelatihan' => 'required',
             'target_hasil_pelatihan' => 'required',
+            'karyawans' => 'required',
         ];
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Karyawan;
 use App\Provider;
 use App\Pelatihan;
+use App\Pengusulan;
 use App\Http\Requests\PelatihanRequest;
 
 class PelatihanController extends Controller
@@ -29,9 +30,11 @@ class PelatihanController extends Controller
     public function create()
     {
         return view('pelatihan.create', [
+            'isCreate' => true,
             'pelatihan' => new Pelatihan,
             'semuaKaryawan' => Karyawan::orderBy('nama')->pluck('nama', 'id')->toArray(),
             'semuaProvider' => Provider::orderBy('nama')->pluck('nama', 'id')->toArray(),
+            'semuaPengusulan' => Pengusulan::orderBy('keterangan_pelatihan')->pluck('keterangan_pelatihan', 'id')->toArray(),
         ]);
     }
 
@@ -53,9 +56,9 @@ class PelatihanController extends Controller
 
         $pelatihan = Pelatihan::create($data);
 
-        if ($request->has('karyawan')) {
-            $pelatihan->karyawan()->attach($request->input('karyawan'));
-        }
+        $pengusulan = Pengusulan::find($request->input('id_pengusulan'));
+
+        $pelatihan->karyawan()->attach($pengusulan->karyawans->pluck('id')->toArray());
 
         return redirect()->route('pelatihan.index');
     }
@@ -79,10 +82,11 @@ class PelatihanController extends Controller
      */
     public function edit(Pelatihan $pelatihan)
     {
+        $isCreate = false;
         $semuaKaryawan = Karyawan::orderBy('nama')->pluck('nama', 'id')->toArray();
         $semuaProvider = Provider::orderBy('nama')->pluck('nama', 'id')->toArray();
 
-        return view('pelatihan.edit', compact('pelatihan', 'semuaKaryawan', 'semuaProvider'));
+        return view('pelatihan.edit', compact('pelatihan', 'semuaKaryawan', 'semuaProvider', 'isCreate'));
     }
 
     /**
