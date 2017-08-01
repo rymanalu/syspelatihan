@@ -17,7 +17,7 @@ class PengusulanController extends Controller
      */
     public function index()
     {
-        $semuaPengusulan = Pengusulan::with('karyawan')->get();
+        $semuaPengusulan = Pengusulan::with('karyawans')->get();
 
         return view('pengusulan.index', compact('semuaPengusulan'));
     }

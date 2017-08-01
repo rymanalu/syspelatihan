@@ -33,7 +33,7 @@
                             @forelse ($semuaPengusulan as $pengusulan)
                                 <tr>
                                     <td align="right">{{ $loop->iteration }}</td>
-                                    <td>{{ $pengusulan->karyawan->nama }}</td>
+                                    <td>{{ $pengusulan->karyawans->pluck('nama')->implode(', ') }}</td>
                                     <td>{{ $pengusulan->keterangan_pelatihan }}</td>
                                     <td>{{ $pengusulan->target_hasil_pelatihan }}</td>
                                     <td>{{ $pengusulan->catatan }}</td>
