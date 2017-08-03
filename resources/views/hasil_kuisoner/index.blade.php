@@ -30,25 +30,25 @@
                                     <th>Rata-rata</th>
                                     <th>Persentase</th>
                                 </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($pelatihans as $pelatihan)
-                                <tr>
-                                    <td align="right">{{ $loop->iteration }}</td>
-                                    <td>{{ $pelatihan->nama }}</td>
-                                    <td align="right">{{ $rataRata = number_format($pelatihan->jawaban, 2) }}</td>
-                                    <td align="right">{{ ($rataRata / 5) * 100 }}%</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach ($pelatihans as $pelatihan)
+                                    <tr>
+                                        <td align="right">{{ $loop->iteration }}</td>
+                                        <td>{{ $pelatihan->nama }}</td>
+                                        <td align="right">{{ $rataRata = number_format($pelatihan->jawaban, 2) }}</td>
+                                        <td align="right">{{ ($rataRata / 5) * 100 }}%</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-8 col-md-offset-2" id="chart_block">
+            <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-body" id="hasil_kuisoner_container">
+                    <div class="panel-body">
                         <canvas id="hasil_kuisoner_chart"></canvas>
                     </div>
                 </div>
@@ -72,9 +72,6 @@
 
         <script>
             $(document).ready(function() {
-                $('#hasil_kuisoner_chart').remove();
-                $('#hasil_kuisoner_container').append('<canvas id="hasil_kuisoner_chart"></canvas>');
-
                 new Chart(document.getElementById('hasil_kuisoner_chart'), {
                     type: 'bar',
                     data: {!! $chartData !!},

@@ -22,25 +22,34 @@
                     </div>
 
                     <div class="panel-body">
-                        @foreach ($pelatihan as $key => $p)
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <p align="center" class="form-control-static"><b><u>{{ $p->first()->nama }}</u></b></p>
-                                </div>
-                            </div>
+                        <table class="table table-hover table-responsive">
+                            <thead>
+                                <tr>
+                                    <th width="5%">#</th>
+                                    <th>Nama</th>
+                                    <th>Rata-rata</th>
+                                    <th>Persentase</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($pelatihans as $pelatihan)
+                                    <tr>
+                                        <td align="right">{{ $loop->iteration }}</td>
+                                        <td>{{ $pelatihan->nama }}</td>
+                                        <td align="right">{{ $rataRata = number_format($pelatihan->nilai, 2) }}</td>
+                                        <td align="right">{{ ($rataRata / 5) * 100 }}%</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
-                            @foreach ($p as $x)
-                                <div class="form-group">
-                                    <div class="col-md-11">
-                                        <p class="form-control-static">{{ $x->judul }}</p>
-                                    </div>
-
-                                    <div class="col-md-1">
-                                        <p class="form-control-static">{{ $x->nilai }}</p>
-                                    </div>
-                                </div>
-                            @endforeach
-                        @endforeach
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <canvas id="hasil_evaluasi_chart"></canvas>
                     </div>
                 </div>
             </div>
@@ -55,4 +64,26 @@
             window.location = '{{ route('hasil_evaluasi.index') }}?pelatihan='+this.value;
         });
     </script>
+
+    @if ($hasPelatihan)
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                new Chart(document.getElementById('hasil_evaluasi_chart'), {
+                    type: 'bar',
+                    data: {!! $chartData !!},
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero:true
+                                }
+                            }]
+                        }
+                    }
+                });
+            });
+        </script>
+    @endif
 @endpush
