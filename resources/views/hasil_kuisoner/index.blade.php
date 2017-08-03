@@ -59,6 +59,14 @@
 @endsection
 
 @push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#pelatihan').change(function() {
+                window.location = '{{ route('hasil_kuisoner.index') }}?pelatihan='+this.value;
+            });
+        });
+    </script>
+
     @if ($hasPelatihan)
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 
