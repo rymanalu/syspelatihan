@@ -50,8 +50,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('peningkatan_pelatihan/{pelatihan}', 'PeningkatanPelatihanController@store')->name('peningkatan_pelatihan.store');
 
     Route::get('hasil_evaluasi', 'HasilEvaluasiController@index')->name('hasil_evaluasi.index');
+    Route::get('hasil_evaluasi/{pelatihan}/peserta/{karyawan}', 'HasilEvaluasiController@detail')->name('hasil_evaluasi.detail');
 
     Route::get('hasil_kuisoner', 'HasilKuisonerController@index')->name('hasil_kuisoner.index');
+    Route::get('hasil_kuisoner/{pelatihan}/peserta/{karyawan}', 'HasilKuisonerController@detail')->name('hasil_kuisoner.detail');
 
     Route::get('hasil_peningkatan_pelatihan', 'HasilPeningkatanPelatihanController@index')->name('hasil_peningkatan_pelatihan.index');
     Route::post('hasil_peningkatan_pelatihan/{pelatihan}', 'HasilPeningkatanPelatihanController@data')->name('hasil_peningkatan_pelatihan.data');
