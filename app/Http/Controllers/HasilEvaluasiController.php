@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use App\Karyawan;
 use App\Pelatihan;
 use Illuminate\Http\Request;
 
@@ -18,9 +19,9 @@ class HasilEvaluasiController extends Controller
             $pelatihans =  DB::table('penilaian_evaluasi')
                             ->join('karyawan', 'karyawan.id', '=', 'penilaian_evaluasi.id_karyawan')
                             ->join('evaluasi_pelatihan', 'evaluasi_pelatihan.id', '=', 'penilaian_evaluasi.id_evaluasi_pelatihan')
-                            ->select('karyawan.id', 'karyawan.nama', DB::raw('avg(penilaian_evaluasi.nilai) as nilai'))
+                            ->select('karyawan.id as id_karyawan', 'karyawan.nama', DB::raw('avg(penilaian_evaluasi.nilai) as nilai'), 'penilaian_evaluasi.id_pelatihan')
                             ->orderBy('karyawan.id')
-                            ->groupBy('karyawan.id')
+                            ->groupBy('karyawan.id', 'penilaian_evaluasi.id_pelatihan')
                             ->where('penilaian_evaluasi.id_pelatihan', $pelatihanId)
                             ->get();
 
@@ -42,5 +43,24 @@ class HasilEvaluasiController extends Controller
         }
 
         return view('hasil_evaluasi.index', compact('hasPelatihan', 'semuaPelatihan', 'pelatihanId', 'pelatihans', 'chartData'));
+    }
+
+    public function detail(Pelatihan $pelatihan, Karyawan $karyawan)
+    {
+        $detail = DB::table('penilaian_evaluasi')
+                    ->join('karyawan', 'karyawan.id', '=', 'penilaian_evaluasi.id_karyawan')
+                    ->join('evaluasi_pelatihan', 'evaluasi_pelatihan.id', '=', 'penilaian_evaluasi.id_evaluasi_pelatihan')
+                    ->join('pelatihan', 'pelatihan.id', '=', 'penilaian_evaluasi.id_pelatihan')
+                    ->select('karyawan.id', 'karyawan.nama', 'evaluasi_pelatihan.judul', 'penilaian_evaluasi.nilai', 'pelatihan.nama as nama_pelatihan')
+                    ->orderBy('karyawan.id')
+                    ->where('penilaian_evaluasi.id_pelatihan', $pelatihan->id)
+                    ->where('penilaian_evaluasi.id_karyawan', $karyawan->id)
+                    ->get();
+
+        $karyawan = $detail->first();
+
+        $avg = number_format($detail->avg('nilai'), 2);
+
+        return view('hasil_evaluasi.detail', compact('detail', 'karyawan', 'avg'));
     }
 }

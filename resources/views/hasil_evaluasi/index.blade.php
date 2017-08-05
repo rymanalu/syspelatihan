@@ -35,7 +35,7 @@
                                 @foreach ($pelatihans as $pelatihan)
                                     <tr>
                                         <td align="right">{{ $loop->iteration }}</td>
-                                        <td>{{ $pelatihan->nama }}</td>
+                                        <td><a href="{{ route('hasil_evaluasi.detail', [$pelatihan->id_pelatihan, $pelatihan->id_karyawan]) }}">{{ $pelatihan->nama }}</a></td>
                                         <td align="right">{{ $rataRata = number_format($pelatihan->nilai, 2) }}</td>
                                         <td align="right">{{ ($rataRata / 5) * 100 }}%</td>
                                     </tr>

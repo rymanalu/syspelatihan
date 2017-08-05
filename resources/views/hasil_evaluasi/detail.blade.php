@@ -6,7 +6,7 @@
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Hasil Kuisoner Pelatihan
+                    Hasil Evaluasi Pelatihan
                 </div>
 
                 <div class="panel-body">
@@ -63,10 +63,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($detail as $kuis)
+                            @foreach ($detail as $evaluasi)
                                 <tr>
-                                    <td>{{ $kuis->judul }}</td>
-                                    <td align="right">{{ $kuis->jawaban }}</td>
+                                    <td>{{ $evaluasi->judul }}</td>
+                                    <td align="right">{{ $evaluasi->nilai }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
