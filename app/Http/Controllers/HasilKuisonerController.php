@@ -21,7 +21,7 @@ class HasilKuisonerController extends Controller
                             ->join('kuisoner_pelatihan', 'kuisoner_pelatihan.id', '=', 'jawaban_kuisoner_pelatihan.id_kuisoner_pelatihan')
                             ->select('karyawan.id as id_karyawan', 'karyawan.nama', DB::raw('avg(jawaban_kuisoner_pelatihan.jawaban) as jawaban'), 'jawaban_kuisoner_pelatihan.id_pelatihan')
                             ->orderBy('karyawan.id')
-                            ->groupBy('karyawan.id', 'jawaban_kuisoner_pelatihan.id_pelatihan')
+                            ->groupBy('karyawan.id', 'jawaban_kuisoner_pelatihan.id_pelatihan', 'karyawan.nama')
                             ->where('jawaban_kuisoner_pelatihan.id_pelatihan', $pelatihanId)
                             ->get();
 

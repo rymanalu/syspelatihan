@@ -21,7 +21,7 @@ class HasilEvaluasiController extends Controller
                             ->join('evaluasi_pelatihan', 'evaluasi_pelatihan.id', '=', 'penilaian_evaluasi.id_evaluasi_pelatihan')
                             ->select('karyawan.id as id_karyawan', 'karyawan.nama', DB::raw('avg(penilaian_evaluasi.nilai) as nilai'), 'penilaian_evaluasi.id_pelatihan')
                             ->orderBy('karyawan.id')
-                            ->groupBy('karyawan.id', 'penilaian_evaluasi.id_pelatihan')
+                            ->groupBy('karyawan.id', 'penilaian_evaluasi.id_pelatihan', 'karyawan.nama')
                             ->where('penilaian_evaluasi.id_pelatihan', $pelatihanId)
                             ->get();
 
